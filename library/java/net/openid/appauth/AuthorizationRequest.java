@@ -318,19 +318,19 @@ public class AuthorizationRequest {
             PARAM_STATE);
 
     private static final String KEY_CONFIGURATION = "configuration";
-    private static final String KEY_CLIENT_ID = "clientId";
+    private static final String KEY_CLIENT_ID = "client_id";
     private static final String KEY_DISPLAY = "display";
     private static final String KEY_LOGIN_HINT = "login_hint";
     private static final String KEY_PROMPT = "prompt";
-    private static final String KEY_RESPONSE_TYPE = "responseType";
-    private static final String KEY_REDIRECT_URI = "redirectUri";
+    private static final String KEY_RESPONSE_TYPE = "response_type";
+    private static final String KEY_REDIRECT_URI = "redirect_uri";
     private static final String KEY_SCOPE = "scope";
     private static final String KEY_STATE = "state";
     private static final String KEY_NONCE = "nonce";
-    private static final String KEY_CODE_VERIFIER = "codeVerifier";
-    private static final String KEY_CODE_VERIFIER_CHALLENGE = "codeVerifierChallenge";
-    private static final String KEY_CODE_VERIFIER_CHALLENGE_METHOD = "codeVerifierChallengeMethod";
-    private static final String KEY_RESPONSE_MODE = "responseMode";
+    private static final String KEY_CODE_VERIFIER = "code_verifier";
+    private static final String KEY_CODE_VERIFIER_CHALLENGE = "code_challenge";
+    private static final String KEY_CODE_VERIFIER_CHALLENGE_METHOD = "code_challenge_method";
+    private static final String KEY_RESPONSE_MODE = "response_type";
     private static final String KEY_ADDITIONAL_PARAMETERS = "additionalParameters";
     private static final int STATE_LENGTH = 16;
 

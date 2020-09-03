@@ -60,7 +60,7 @@ public class AuthorizationServiceConfiguration {
     private static final String KEY_AUTHORIZATION_ENDPOINT = "authorizationEndpoint";
     private static final String KEY_TOKEN_ENDPOINT = "tokenEndpoint";
     private static final String KEY_REGISTRATION_ENDPOINT = "registrationEndpoint";
-    private static final String KEY_DISCOVERY_DOC = "discoveryDoc";
+    private static final String KEY_DISCOVERY_DOC = "discoveryDocument";
 
     /**
      * The authorization service's endpoint.

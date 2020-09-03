@@ -49,19 +49,19 @@ public class TokenRequest {
     @VisibleForTesting
     static final String KEY_CONFIGURATION = "configuration";
     @VisibleForTesting
-    static final String KEY_CLIENT_ID = "clientId";
+    static final String KEY_CLIENT_ID = "client_id";
     @VisibleForTesting
     static final String KEY_NONCE = "nonce";
     @VisibleForTesting
-    static final String KEY_GRANT_TYPE = "grantType";
+    static final String KEY_GRANT_TYPE = "grant_type";
     @VisibleForTesting
-    static final String KEY_REDIRECT_URI = "redirectUri";
+    static final String KEY_REDIRECT_URI = "redirect_uri";
     @VisibleForTesting
     static final String KEY_SCOPE = "scope";
     @VisibleForTesting
-    static final String KEY_AUTHORIZATION_CODE = "authorizationCode";
+    static final String KEY_AUTHORIZATION_CODE = "code";
     @VisibleForTesting
-    static final String KEY_REFRESH_TOKEN = "refreshToken";
+    static final String KEY_REFRESH_TOKEN = "refresh_token";
     @VisibleForTesting
     static final String KEY_ADDITIONAL_PARAMETERS = "additionalParameters";
 

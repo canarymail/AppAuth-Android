@@ -52,7 +52,7 @@ public class AuthState {
     private static final String KEY_REFRESH_TOKEN = "refreshToken";
     private static final String KEY_SCOPE = "scope";
     private static final String KEY_LAST_AUTHORIZATION_RESPONSE = "lastAuthorizationResponse";
-    private static final String KEY_LAST_TOKEN_RESPONSE = "mLastTokenResponse";
+    private static final String KEY_LAST_TOKEN_RESPONSE = "lastTokenResponse";
     private static final String KEY_AUTHORIZATION_EXCEPTION = "mAuthorizationException";
     private static final String KEY_LAST_REGISTRATION_RESPONSE = "lastRegistrationResponse";
 
