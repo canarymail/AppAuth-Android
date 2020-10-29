@@ -111,6 +111,7 @@ public final class ConnectionBuilderForTesting implements ConnectionBuilder {
         Preconditions.checkArgument(HTTP.equals(uri.getScheme()) || HTTPS.equals(uri.getScheme()),
                 "scheme or uri must be http or https");
         HttpURLConnection conn = (HttpURLConnection) new URL(uri.toString()).openConnection();
+        conn.setUseCaches(false);
         conn.setConnectTimeout(CONNECTION_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
         conn.setInstanceFollowRedirects(false);
