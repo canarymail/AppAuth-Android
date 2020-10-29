@@ -51,6 +51,7 @@ public final class DefaultConnectionBuilder implements ConnectionBuilder {
         Preconditions.checkArgument(HTTPS_SCHEME.equals(uri.getScheme()),
                 "only https connections are permitted");
         HttpURLConnection conn = (HttpURLConnection) new URL(uri.toString()).openConnection();
+        conn.setUseCaches(false);
         conn.setConnectTimeout(CONNECTION_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
         conn.setInstanceFollowRedirects(false);

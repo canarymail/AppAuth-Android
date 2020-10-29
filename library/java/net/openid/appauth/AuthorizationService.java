@@ -26,6 +26,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
@@ -421,23 +423,23 @@ public class AuthorizationService {
             InputStream is = null;
             try {
                 HttpURLConnection conn = mConnectionBuilder.openConnection(
-                        mRequest.configuration.tokenEndpoint);
+                    mRequest.configuration.tokenEndpoint);
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 addJsonToAcceptHeader(conn);
                 conn.setDoOutput(true);
 
                 Map<String, String> headers = mClientAuthentication
-                        .getRequestHeaders(mRequest.clientId);
+                    .getRequestHeaders(mRequest.clientId);
                 if (headers != null) {
-                    for (Map.Entry<String,String> header : headers.entrySet()) {
+                    for (Map.Entry<String, String> header : headers.entrySet()) {
                         conn.setRequestProperty(header.getKey(), header.getValue());
                     }
                 }
 
                 Map<String, String> parameters = mRequest.getRequestParameters();
                 Map<String, String> clientAuthParams = mClientAuthentication
-                        .getRequestParameters(mRequest.clientId);
+                    .getRequestParameters(mRequest.clientId);
                 if (clientAuthParams != null) {
                     parameters.putAll(clientAuthParams);
                 }
@@ -450,21 +452,26 @@ public class AuthorizationService {
                 wr.flush();
 
                 if (conn.getResponseCode() >= HttpURLConnection.HTTP_OK
-                        && conn.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE) {
+                    && conn.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE) {
                     is = conn.getInputStream();
                 } else {
                     is = conn.getErrorStream();
                 }
                 String response = Utils.readInputStream(is);
+                Log.d("[AUTH]", "Canary Auth Complete");
                 return new JSONObject(response);
             } catch (IOException ex) {
                 Logger.debugWithStack(ex, "Failed to complete exchange request");
                 mException = AuthorizationException.fromTemplate(
-                        GeneralErrors.NETWORK_ERROR, ex);
+                    GeneralErrors.NETWORK_ERROR, ex);
             } catch (JSONException ex) {
                 Logger.debugWithStack(ex, "Failed to complete exchange request");
                 mException = AuthorizationException.fromTemplate(
-                        GeneralErrors.JSON_DESERIALIZATION_ERROR, ex);
+                    GeneralErrors.JSON_DESERIALIZATION_ERROR, ex);
+            } catch (IllegalStateException ex) {
+                Logger.debugWithStack(ex, "Failed to complete exchange request");
+                mException = AuthorizationException.fromTemplate(
+                    GeneralErrors.ID_TOKEN_ILLEGAL_STATE_EXCEPTION, ex);
             } finally {
                 Utils.closeQuietly(is);
             }
