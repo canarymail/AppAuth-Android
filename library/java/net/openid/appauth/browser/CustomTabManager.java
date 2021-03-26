@@ -81,7 +81,11 @@ public class CustomTabManager {
             public void onCustomTabsServiceConnected(ComponentName componentName,
                                                      CustomTabsClient customTabsClient) {
                 Logger.debug("CustomTabsService is connected");
-                customTabsClient.warmup(0);
+                try {
+                    customTabsClient.warmup(0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 setClient(customTabsClient);
             }
 
